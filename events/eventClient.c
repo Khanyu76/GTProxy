@@ -95,11 +95,11 @@ void clientReceive(ENetEvent event, ENetPeer* clientPeer, ENetPeer* serverPeer) 
             if ((packetText + 19)[0] == '/') {
                 // command here
                 char** command = strsplit(packetText + 19, " ", 0);
-                if (isStr(command[0], "/proxyhelp", 1)) {
-                    sendPacket(3, "action|log\nmsg|>> Commands: /helloworld /testarg <your arg> /testdialog /warp <name world> /netid", clientPeer);
+                if (isStr(command[0], "/proxy", 1)) {
+                    sendPacket(3, "action|log\nmsg|>> Command /piw /testarg <your arg> /testdialog /warp <name world> /netid", clientPeer);
                 }
-                else if (isStr(command[0], "/helloworld", 1)) {
-                    sendPacket(3, "action|log\nmsg|`2Hello World", clientPeer);
+                else if (isStr(command[0], "/piw", 1)) {
+                    sendpacket(2, "action|input\n|text|`4Test Betaaaaaa", clientPeer);
                 }
                 else if (isStr(command[0], "/netid", 1)) {
                     enet_peerSend(onPacketCreate("ss", "OnConsoleMessage", CatchMessage("My netID is %s", OnSpawn.LocalNetid)), clientPeer);
